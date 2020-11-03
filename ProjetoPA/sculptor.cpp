@@ -7,7 +7,7 @@ using namespace std;
 Voxel ***v;
 Sculptor::Sculptor(int _nx, int _ny, int _nz)
 {
-    cout <<"funcionou"<<endl;
+    //cout <<"funcionou"<<endl;
 
     nx = _nx;
     ny = _ny;
@@ -36,16 +36,20 @@ Sculptor::Sculptor(int _nx, int _ny, int _nz)
 
 }
 Sculptor::~Sculptor(){
-    cout<<"automatico"<<endl;
+   // cout<<"automatico"<<endl;
 }
 void Sculptor:: setColor(float r, float g, float b, float alpha){
     r=r;
+     //cout<<r;
     g=g;
+       // cout<<g;
     b=b;
+       // cout<<b;
     alpha=alpha;
 }
 
 void Sculptor:: putVoxel(int x, int y, int z){
+    //cout <<r;
     v[x][y][z].isOn=true;
     v[x][y][z].r=r;
     v[x][y][z].g=g;
@@ -67,7 +71,7 @@ void Sculptor ::putBox(int x0, int x1, int y0, int y1, int z0, int z1){
                 v[x][y][z].g=g;
                 v[x][y][z].b=b;
                 v[x][y][z].a=a;
-                //cout <<x << y <<z;
+               // cout <<v[x][y][z].r;
             }
         }
     }
@@ -131,13 +135,15 @@ void Sculptor:: cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int 
 void Sculptor::writeOFF(char *filename){
 
     ofstream arquivo;
-    int vertices=8,faces=6;
+    int vertices=0,faces=0;
+    int cont = 0;
     //if(!arquivo.is_open())
      //  {
      //      exit(0);
       // }
-
+/*
     for (int i=0;i<nx;i++){
+
         vertices +=8;
         faces+=6;
     }
@@ -151,16 +157,31 @@ void Sculptor::writeOFF(char *filename){
     }
     arquivo <<"OFF"<<endl;
     arquivo <<vertices << faces<<endl;
+
     //arquivo <<-0.5,
     cout<<"OFF"<<endl;
     cout<<vertices << " "<< faces<<endl;
-    cout<<"vamos la";
+   // cout<<"vamos la";
+   */
+    for(int x =0;x<nx;x++){
+        for(int y=0;y<ny;y++){
+            for(int z=0;z<nz;z++){
+                if(v[x][y][z].isOn==true){
+                    vertices+=8;
+                    faces+=6;
+                }
+            }
+        }
+    }
+    cout<<"OFF"<<endl;
+    cout<<vertices << " "<< faces<<" "<<"0"<<endl;
+
     int i=0;
     for(int x =0;x<nx;x++){
         for(int y=0;y<ny;y++){
             for(int z=0;z<nz;z++){
                 if(v[x][y][z].isOn){
-                    cout <<"ponto "<<x<<" "<<y<<" " <<z<<endl;
+                    //cout <<"ponto "<<x<<" "<<y<<" " <<z<<endl;
                     cout <<x+0<<" "<<y+1<<" "<<z+0<<endl;
                     cout <<x+0<<" " <<y+0<<" " <<z+0<<endl;
                     cout <<x+1<<" " <<y+0<<" " <<z+0<<endl;
@@ -169,16 +190,36 @@ void Sculptor::writeOFF(char *filename){
                     cout <<x+0<<" " <<y+0<<" " <<z+1<<endl;
                     cout <<x+1<<" " <<y+0<<" " <<z+1<<endl;
                     cout <<x+1<<" " <<y+1<<" " <<z+1<<endl;
-                    cout << 4 <<" " <<i+0 << " " <<i+3<< " " <<i+2<< " " <<i+1<< " "<<v[x][y][z].a<< " "<<v[x][y][z].b<< " "<<v[x][y][z].g <<endl;
+/*
+                    cout << 4 <<" " <<i+0 << " " <<i+3<< " " <<i+2<< " " <<i+1<<endl;
                     cout << 4 <<" " <<i+4 << " " <<i+5<< " " <<i+6<< " " <<i+7<< " " <<endl;
                     cout << 4 <<" " <<i+0 << " " <<i+1<< " " <<i+5<< " " <<i+4<< " " <<endl;
                     cout << 4 <<" " <<i+0 << " " <<i+4<< " " <<i+7<< " " <<i+3<< " " <<endl;
                     cout << 4 <<" " <<i+3 << " " <<i+7<< " " <<i+6<< " " <<i+2<< " " <<endl;
                     cout << 4 <<" " <<i+1 << " " <<i+2<< " " <<i+6<< " " <<i+5<< " " <<endl;
                     i+=8;
+                    */
+
                 }
             }
         }
     }
+
+    for(int x =0;x<nx;x++){
+        for(int y=0;y<ny;y++){
+            for(int z=0;z<nz;z++){
+                if(v[x][y][z].isOn){
+                    cout << 4 <<" " <<i+0 << " " <<i+3<< " " <<i+2<< " " <<i+1<<endl;
+                    cout << 4 <<" " <<i+4 << " " <<i+5<< " " <<i+6<< " " <<i+7<< " " <<endl;
+                    cout << 4 <<" " <<i+0 << " " <<i+1<< " " <<i+5<< " " <<i+4<< " " <<endl;
+                    cout << 4 <<" " <<i+0 << " " <<i+4<< " " <<i+7<< " " <<i+3<< " " <<endl;
+                    cout << 4 <<" " <<i+3 << " " <<i+7<< " " <<i+6<< " " <<i+2<< " " <<endl;
+                    cout << 4 <<" " <<i+1 << " " <<i+2<< " " <<i+6<< " " <<i+5<< " " <<endl;
+                i+=8;
+                }
+            }
+        }
+    }
+
 }
 
