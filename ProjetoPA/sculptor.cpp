@@ -76,12 +76,21 @@ void Sculptor ::putBox(int x0, int x1, int y0, int y1, int z0, int z1){
         }
     }
 }
+void Sculptor ::cutBox(int x0, int x1, int y0, int y1, int z0, int z1){
+    for (int x = x0;x<x1;x++){
+        for (int y = y0;y<y1;y++){
+            for (int z = z0;z<z1;z++){
+                v[x][y][z].isOn = false;
+            }
+        }
+    }
+}
 
 void Sculptor ::putSphere(int xcenter, int ycenter, int zcenter, int radius){
     for(int x=0;x<nx;x++){
         for(int y=0;y<ny;y++){
             for (int z=0;z<nz;z++){
-                if((pow(x-xcenter,2)+pow(y-ycenter,2)+pow(z-zcenter,2))==pow(radius,2)){
+                if((pow(x-xcenter,2)+pow(y-ycenter,2)+pow(z-zcenter,2))<=pow(radius,2)){
                    // cout << x << y<<z<<endl;
                      v[x][y][z].isOn=true;
                      v[x][y][z].r=r;
@@ -98,7 +107,7 @@ void Sculptor ::cutSphere(int xcenter, int ycenter, int zcenter, int radius){
     for(int x=0;x<nx;x++){
         for(int y=0;y<ny;y++){
             for (int z=0;z<nz;z++){
-                if((pow(x-xcenter,2)+pow(y-ycenter,2)+pow(z-zcenter,2))==pow(radius,2)){
+                if((pow(x-xcenter,2)+pow(y-ycenter,2)+pow(z-zcenter,2))<=pow(radius,2)){
                      v[x][y][z].isOn=false;
                 }
             }
@@ -109,7 +118,7 @@ void Sculptor ::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int 
     for(int x=0;x<nx;x++){
         for(int y=0;y<ny;y++){
             for (int z=0;z<nz;z++){
-                if(((pow(x-xcenter,2)/rx)+(pow(y-ycenter,2)/ry)+(pow(z-zcenter,2)/rz))==1){
+                if(((pow(x-xcenter,2)/rx)+(pow(y-ycenter,2)/ry)+(pow(z-zcenter,2)/rz))<=1){
                      v[x][y][z].isOn=true;
                      v[x][y][z].r=r;
                      v[x][y][z].g=g;
@@ -125,7 +134,7 @@ void Sculptor:: cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int 
     for(int x=0;x<nx;x++){
         for(int y=0;y<ny;y++){
             for (int z=0;z<nz;z++){
-                if(((pow(x-xcenter,2)/rx)+(pow(y-ycenter,2)/ry)+(pow(z-zcenter,2)/rz))==1){
+                if(((pow(x-xcenter,2)/rx)+(pow(y-ycenter,2)/ry)+(pow(z-zcenter,2)/rz))<=1){
                      v[x][y][z].isOn=false;
                 }
             }
@@ -136,7 +145,7 @@ void Sculptor::writeOFF(char *filename){
 
     ofstream arquivo;
     int vertices=0,faces=0;
-    int cont = 0;
+    arquivo.open(filename);
     //if(!arquivo.is_open())
      //  {
      //      exit(0);
