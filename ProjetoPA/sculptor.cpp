@@ -25,6 +25,7 @@ Sculptor::Sculptor(int _nx, int _ny, int _nz)
         }
     }
 
+
     for(int x=0;x<nx;x++){
         for(int y=0;y<ny;y++){
             for(int z=0;z<nz;z++){
@@ -38,18 +39,17 @@ Sculptor::Sculptor(int _nx, int _ny, int _nz)
 Sculptor::~Sculptor(){
    // cout<<"automatico"<<endl;
 }
+
 void Sculptor:: setColor(float r, float g, float b, float alpha){
-    r=r;
-     //cout<<r;
-    g=g;
-       // cout<<g;
-    b=b;
-       // cout<<b;
-    alpha=alpha;
+    this->r=r;
+    this->g=g;
+    this->b=b;
+    this->a=alpha;
+
 }
 
 void Sculptor:: putVoxel(int x, int y, int z){
-    //cout <<r;
+    cout <<r<<" "<<g<<" "<<b<< " "<<a;
     v[x][y][z].isOn=true;
     v[x][y][z].r=r;
     v[x][y][z].g=g;
@@ -98,10 +98,12 @@ void Sculptor ::putSphere(int xcenter, int ycenter, int zcenter, int radius){
                      v[x][y][z].b=b;
                      v[x][y][z].a=a;
                     // cout << x<< " "<<y<<" "<<z<<endl;
+
                 }
             }
         }
     }
+
 }
 void Sculptor ::cutSphere(int xcenter, int ycenter, int zcenter, int radius){
     for(int x=0;x<nx;x++){
@@ -114,6 +116,7 @@ void Sculptor ::cutSphere(int xcenter, int ycenter, int zcenter, int radius){
         }
     }
 }
+/*
 void Sculptor ::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz){
     for(int x=0;x<nx;x++){
         for(int y=0;y<ny;y++){
@@ -141,15 +144,43 @@ void Sculptor:: cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int 
         }
     }
 }
+*/
+void Sculptor ::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz){
+    for(int x=0;x<nx;x++){
+        for(int y=0;y<ny;y++){
+            for (int z=0;z<nz;z++){
+                if(((pow(x-xcenter,2)/pow(rx,2))+(pow(y-ycenter,2)/pow(ry,2))+(pow(z-zcenter,2)/pow(rz,2)))<=1){
+                     v[x][y][z].isOn=true;
+                     v[x][y][z].r=r;
+                     v[x][y][z].g=g;
+                     v[x][y][z].b=b;
+                     v[x][y][z].a=a;
+                   //  cout << x<<" " << y<< " "<< z <<endl;
+                }
+            }
+        }
+    }
+}
+void Sculptor:: cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz){
+    for(int x=0;x<nx;x++){
+        for(int y=0;y<ny;y++){
+            for (int z=0;z<nz;z++){
+                if(((pow(x-xcenter,2)/pow(rx,2))+(pow(y-ycenter,2)/pow(ry,2))+(pow(z-zcenter,2)/pow(rz,2)))<=1){
+                     v[x][y][z].isOn=false;
+                }
+            }
+        }
+    }
+}
 void Sculptor::writeOFF(char *filename){
 
     ofstream arquivo;
     int vertices=0,faces=0;
     arquivo.open(filename);
-    //if(!arquivo.is_open())
-     //  {
-     //      exit(0);
-      // }
+    if(!arquivo.is_open())
+       {
+           exit(0);
+       }
 /*
     for (int i=0;i<nx;i++){
 
@@ -218,12 +249,12 @@ void Sculptor::writeOFF(char *filename){
         for(int y=0;y<ny;y++){
             for(int z=0;z<nz;z++){
                 if(v[x][y][z].isOn){
-                    cout << 4 <<" " <<i+0 << " " <<i+3<< " " <<i+2<< " " <<i+1<<endl;
-                    cout << 4 <<" " <<i+4 << " " <<i+5<< " " <<i+6<< " " <<i+7<< " " <<endl;
-                    cout << 4 <<" " <<i+0 << " " <<i+1<< " " <<i+5<< " " <<i+4<< " " <<endl;
-                    cout << 4 <<" " <<i+0 << " " <<i+4<< " " <<i+7<< " " <<i+3<< " " <<endl;
-                    cout << 4 <<" " <<i+3 << " " <<i+7<< " " <<i+6<< " " <<i+2<< " " <<endl;
-                    cout << 4 <<" " <<i+1 << " " <<i+2<< " " <<i+6<< " " <<i+5<< " " <<endl;
+                    cout << 4 <<" " <<i+0 << " " <<i+3<< " " <<i+2<< " " <<i+1<< " " <<v[x][y][z].r<< " " <<v[x][y][z].g<< " " <<v[x][y][z].b<<endl;
+                    cout << 4 <<" " <<i+4 << " " <<i+5<< " " <<i+6<< " " <<i+7<< " " <<v[x][y][z].r<< " " <<v[x][y][z].g<< " " <<v[x][y][z].b<<endl;
+                    cout << 4 <<" " <<i+0 << " " <<i+1<< " " <<i+5<< " " <<i+4<< " " <<v[x][y][z].r<< " " <<v[x][y][z].g<< " " <<v[x][y][z].b<<endl;
+                    cout << 4 <<" " <<i+0 << " " <<i+4<< " " <<i+7<< " " <<i+3<< " " <<v[x][y][z].r<< " " <<v[x][y][z].g<< " " <<v[x][y][z].b<<endl;
+                    cout << 4 <<" " <<i+3 << " " <<i+7<< " " <<i+6<< " " <<i+2<< " " <<v[x][y][z].r<< " " <<v[x][y][z].g<< " " <<v[x][y][z].b<<endl;
+                    cout << 4 <<" " <<i+1 << " " <<i+2<< " " <<i+6<< " " <<i+5<< " " <<v[x][y][z].r<< " " <<v[x][y][z].g<< " " <<v[x][y][z].b<<endl;
                 i+=8;
                 }
             }
