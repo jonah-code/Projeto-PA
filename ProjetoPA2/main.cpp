@@ -3,38 +3,19 @@
 #include <string>
 #include <cstdlib>
 #include <sstream>
+#include "sculptor.h"
+#include <vector>
+#include "figurageometrica.h"
+#include "leitor.h"
 using namespace std;
 
 int main()
 {
- ifstream fin;
- string s;
- stringstream ss;
- fin.open("C:/Users/jns44/Desktop/Novo projeto/jonas.txt");
- if(!fin.is_open()){
-     cout<<"Deu errado"<<endl;
-     exit(0);
- }
-     while (getline(fin,s)){
-         ss.clear();
-         ss.str(s);
-         ss >> s;
-         if(s.compare("putvoxel")==0){
-             int x, y, z;
-             ss >>x >> y >> z;
-         }
-         else if(s.compare("putbox")==0){
-             int x0,x1,y0,y1,z0,z1;
-             ss >>x0 >> x1 >> y0 >> y1 >> z0 >>z1;
-         }
-         else if(s.compare("putesfera")==0){
-             int x, y, z, r ;
-             ss >>x >> y >>z >> r;
-         }
-         else if(s.compare("")==0){
-             int x, y, z, rx, ry ,rz ;
-             ss >>x >> y >>z >> rx >> ry >> rz;
-         }
-     }
-
+  Sculptor *objeto, *s1;
+  FiguraGeometrica *p[10];
+  Leitor ler;
+  vector<FiguraGeometrica*> fig;
+  p[0]=new PutVoxel(1,1,1,1,1,1,1);
+  fig = ler.armazena();
+  objeto->writeOFF("dnv.txt");
 }

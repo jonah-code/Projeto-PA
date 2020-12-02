@@ -7,12 +7,14 @@
 #include <sstream>
 #include <vector>
 #include "figurageometrica.h"
+#include "putvoxel.h"
 using namespace std;
 Leitor::Leitor()
 {
 
 }
-void Leitor::armazena(){
+vector<FiguraGeometrica*> Leitor::armazena(){
+    vector<FiguraGeometrica*> fig;
 ifstream fin;
 string s;
 stringstream ss;
@@ -26,9 +28,14 @@ if(!fin.is_open()){
         ss.str(s);
         ss >> s;
         if(s.compare("putvoxel")==0){
-            int x, y, z;
-            ss >>x >> y >> z;
+            int x,y,z;
+            float r,g,b,a;
+            ss>>x>>y>>z>>r>>g>>b>>a;
+            cout <<"jonas";
+            fig.push_back(new PutVoxel(x,y,z,r,g,b,a));
+
         }
+        /*
         else if(s.compare("putbox")==0){
             int x0,x1,y0,y1,z0,z1;
             ss >>x0 >> x1 >> y0 >> y1 >> z0 >>z1;
@@ -41,5 +48,8 @@ if(!fin.is_open()){
             int x, y, z, rx, ry ,rz ;
             ss >>x >> y >>z >> rx >> ry >> rz;
         }
+        */
+
     }
+    return fig;
 }
