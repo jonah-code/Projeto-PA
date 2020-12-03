@@ -15,8 +15,9 @@ void PutEsfera::draw(Sculptor &t)
             for(int y=0;y<ycenter+raio;y++){
                 for (int z=0;z<zcenter+raio;z++){
                     if((pow(x-xcenter,2)+pow(y-ycenter,2)+pow(z-zcenter,2))<pow(raio,2)){
-                      t.putVoxel(x,y,z);
-                      t.setColor(r,g,b,a);
+                        t.setColor(r,g,b,a);
+                        t.putVoxel(x,y,z);
+
                     }
                 }
             }

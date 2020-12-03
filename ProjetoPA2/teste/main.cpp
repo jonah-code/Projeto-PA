@@ -1,6 +1,5 @@
 #include <iostream>
 #include "figurageometrica.h"
-#include "reta.h"
 #include <vector>
 #include <fstream>
 #include <sstream>
@@ -8,7 +7,6 @@
 #include <sculptor.h>
 #include <putbox.h>
 #include "putesfera.h"
-#include "leitor.h"
 #include "putelipse.h"
 #include "cutvoxel.h"
 #include "cutesfera.h"
@@ -20,7 +18,6 @@ int main()
 {
 
     Sculptor *f;
-    leitor r;
     int dimx,dimy,dimz;
     vector<FiguraGeometrica*> p1;
     ifstream fin;

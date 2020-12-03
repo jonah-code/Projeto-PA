@@ -15,7 +15,6 @@ SOURCES += \
         putelipse.cpp \
         putesfera.cpp \
         putvoxel.cpp \
-        reta.cpp \
         sculptor.cpp
 
 HEADERS += \
@@ -29,5 +28,4 @@ HEADERS += \
     putelipse.h \
     putesfera.h \
     putvoxel.h \
-    reta.h \
     sculptor.h
