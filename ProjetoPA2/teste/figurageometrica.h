@@ -1,6 +1,8 @@
 #ifndef FIGURAGEOMETRICA_H
 #define FIGURAGEOMETRICA_H
+#include <iostream>
 #include "sculptor.h"
+using namespace std;
 
 class FiguraGeometrica
 {

@@ -1,9 +1,9 @@
 #ifndef PUTVOXEL_H
 #define PUTVOXEL_H
 #include "sculptor.h"
-#include "figurageometrica.h"
+#include <figurageometrica.h>
 
-class PutVoxel  : public FiguraGeometrica
+class PutVoxel : public FiguraGeometrica
 {
     int x, y ,z;
     float r,g,b,a;

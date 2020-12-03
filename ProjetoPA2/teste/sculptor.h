@@ -1,6 +1,7 @@
 #ifndef SCULPTOR_H
 #define SCULPTOR_H
 
+
 struct Voxel {
   float r,g,b; // Colors
   float a;
@@ -22,5 +23,4 @@ public:
   void cutVoxel(int x, int y, int z);
   void writeOFF(char* filename);
 };
-
 #endif // SCULPTOR_H

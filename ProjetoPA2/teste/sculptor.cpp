@@ -35,7 +35,6 @@ Sculptor::~Sculptor(){
     delete [] **v;
     delete [] *v;
     delete [] v;
-    //cout<<"funcionando"<<endl;
 }
 
 void Sculptor:: setColor(float r, float g, float b, float alpha){
@@ -68,7 +67,6 @@ void Sculptor::cutVoxel(int x, int y, int z){
 
 
 void Sculptor::writeOFF(char *filename){
-    cout<<"jonaaaaaaaaaaaaaaaaaaaaaaaaaasssssssssss";
     ofstream arquivo;
     int vertices=0,faces=0;
     arquivo.open(filename);
