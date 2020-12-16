@@ -1,0 +1,12 @@
+dim 70 70  70
+putbox 0 41 0 55 0 41 1 0 0 1
+cutesfera 20 21 0 20 
+cutbox 8 32 44 53 0 3
+putesfera 20 21 0 18 0 0 0 1
+cutesfera 20 21 0 9
+putbox 11 14 47 50 0 2 0 0 0 1
+putbox 16 19 47 50 0 2 0 0 0 1
+putbox 21 24 47 50 0 2 0 0 0 1
+putbox 26 29 47 50 0 2 0 0 0 1
+putelipse 20 55 20 20 10 5 0 0 0 1
+cutbox 5 36 56 60 0 50 
