@@ -92,6 +92,6 @@ int main()
     }
 
 
-    f->writeOFF("C:/Users/jns44/Desktop/Novo projeto/teste5.off");
+    f->writeOFF("C:/Users/jns44/Desktop/Novo projeto/teste8.off");
 }
 
