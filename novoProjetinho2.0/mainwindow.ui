@@ -102,8 +102,8 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>620</x>
-      <y>130</y>
+      <x>640</x>
+      <y>220</y>
       <width>115</width>
       <height>45</height>
      </rect>
@@ -139,8 +139,8 @@
    <widget class="QWidget" name="layoutWidget_4">
     <property name="geometry">
      <rect>
-      <x>610</x>
-      <y>370</y>
+      <x>640</x>
+      <y>410</y>
       <width>107</width>
       <height>105</height>
      </rect>
@@ -212,8 +212,8 @@
    <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>621</x>
-      <y>241</y>
+      <x>640</x>
+      <y>290</y>
       <width>107</width>
       <height>105</height>
      </rect>
@@ -307,6 +307,7 @@
     <slot>mudaDimy(int)</slot>
     <slot>mudaDimz(int)</slot>
     <slot>mudaRaio(int)</slot>
+    <slot>mudaPutvoxel()</slot>
    </slots>
   </customwidget>
  </customwidgets>
@@ -320,11 +321,11 @@
    <hints>
     <hint type="sourcelabel">
      <x>724</x>
-     <y>38</y>
+     <y>44</y>
     </hint>
     <hint type="destinationlabel">
-     <x>755</x>
-     <y>41</y>
+     <x>794</x>
+     <y>45</y>
     </hint>
    </hints>
   </connection>
@@ -335,12 +336,12 @@
    <slot>display(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>723</x>
-     <y>68</y>
+     <x>724</x>
+     <y>75</y>
     </hint>
     <hint type="destinationlabel">
-     <x>760</x>
-     <y>69</y>
+     <x>794</x>
+     <y>76</y>
     </hint>
    </hints>
   </connection>
@@ -351,12 +352,12 @@
    <slot>display(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>721</x>
-     <y>97</y>
+     <x>724</x>
+     <y>106</y>
     </hint>
     <hint type="destinationlabel">
-     <x>753</x>
-     <y>97</y>
+     <x>794</x>
+     <y>107</y>
     </hint>
    </hints>
   </connection>
@@ -367,8 +368,8 @@
    <slot>mudaDimx(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>688</x>
-     <y>31</y>
+     <x>719</x>
+     <y>44</y>
     </hint>
     <hint type="destinationlabel">
      <x>224</x>
@@ -383,8 +384,8 @@
    <slot>mudaDimy(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>711</x>
-     <y>59</y>
+     <x>724</x>
+     <y>75</y>
     </hint>
     <hint type="destinationlabel">
      <x>494</x>
@@ -399,8 +400,8 @@
    <slot>mudaRaio(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>622</x>
-     <y>185</y>
+     <x>644</x>
+     <y>283</y>
     </hint>
     <hint type="destinationlabel">
      <x>503</x>
