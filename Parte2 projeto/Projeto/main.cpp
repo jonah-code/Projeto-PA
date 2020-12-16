@@ -23,7 +23,7 @@ int main()
     ifstream fin;
     string s;
     stringstream ss;
-    fin.open("C:/Users/jns44/Desktop/Novo projeto/Scultura.txt");
+    fin.open("C:/Users/jns44/Desktop/Novo projeto/Scultura2.txt");
     if(!fin.is_open()){
         cout<<"Deu errado"<<endl;
         exit(0);
@@ -92,6 +92,6 @@ int main()
     }
 
 
-    f->writeOFF("C:/Users/jns44/Desktop/Novo projeto/teste8.off");
+    f->writeOFF("C:/Users/jns44/Desktop/Novo projeto/teste9.off");
 }
 
